@@ -8,5 +8,14 @@ public class Heroi extends Personagem{
         this.setSuperPoder(superPoder);
         this.nomeVidaReal = nomeVidaReal;
     }
+
+    @Override
+    public String toString() {
+        return "Heroi{" +
+                "nomeVidaReal='" + nomeVidaReal + '\'' +
+                "nome='" + getNome() + '\'' +
+                "super poder='" + getSuperPoder() + '\'' +
+                '}';
+    }
 }
 
