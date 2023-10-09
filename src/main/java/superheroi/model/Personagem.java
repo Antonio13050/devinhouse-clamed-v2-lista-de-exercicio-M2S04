@@ -1,5 +1,7 @@
 package superheroi.model;
 
+import java.util.Objects;
+
 public abstract class Personagem {
     private String nome;
     private String superPoder;
@@ -18,6 +20,19 @@ public abstract class Personagem {
 
     public void setSuperPoder(String superPoder) {
         this.superPoder = superPoder;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Personagem that = (Personagem) o;
+        return Objects.equals(nome, that.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 }
 

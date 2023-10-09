@@ -1,6 +1,7 @@
 package superheroi;
 
 import superheroi.cli.Display;
+import superheroi.exception.OpcaoInvalidaException;
 import superheroi.model.Heroi;
 import superheroi.model.Personagem;
 import superheroi.model.Vilao;
@@ -14,14 +15,20 @@ public class Aplicacao {
 
     private PersonagemRepository personagemRepo = new PersonagemRepository();
     Display display = new Display();
-    public void executar(){
+    public void executar() {
 
         Scanner scanner = new Scanner(System.in);
 
         Integer op = -1;
         do {
             display.exibirMenu();
-            op = display.obterOpcao();
+            try {
+                op = display.obterOpcao();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+            }
+
             processar(op);
 
         }
