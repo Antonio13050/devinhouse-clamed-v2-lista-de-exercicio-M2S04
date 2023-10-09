@@ -2,9 +2,14 @@ package superheroi.model;
 
 import java.util.Objects;
 
-public abstract class Personagem {
+public abstract class Personagem implements Comparable<Personagem>{
     private String nome;
     private String superPoder;
+
+    @Override
+    public int compareTo(Personagem o) {
+        return this.getNome().compareTo(o.getNome());
+    }
 
     public String getNome() {
         return nome;
