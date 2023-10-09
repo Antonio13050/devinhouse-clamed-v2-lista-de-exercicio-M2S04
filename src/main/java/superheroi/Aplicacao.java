@@ -4,13 +4,15 @@ import superheroi.cli.Display;
 import superheroi.model.Heroi;
 import superheroi.model.Personagem;
 import superheroi.model.Vilao;
+import superheroi.repository.PersonagemRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Aplicacao {
 
-    ArrayList<Personagem> personagens = new ArrayList<>();
+    private PersonagemRepository personagemRepo = new PersonagemRepository();
     Display display = new Display();
     public void executar(){
 
@@ -31,14 +33,15 @@ public class Aplicacao {
         switch(op) {
             case 1:
                 Heroi heroi = display.obterDadosHeroi();
-                personagens.add(heroi);
+                personagemRepo.inserir(heroi);
                 break;
             case 2:
                 Vilao vilao = display.obterDadosVilao();
-                personagens.add(vilao);
+                personagemRepo.inserir(vilao);
                 break;
             case 3:
-                display.listar(personagens);
+                List<Personagem> personagens = personagemRepo.listar();
+                personagens.forEach(p -> System.out.println(p));
                 break;
             case 4:
                 System.out.println("Saindo");
